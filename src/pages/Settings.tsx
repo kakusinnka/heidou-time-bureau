@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useStore } from '../store'
+import SyncSection from '../components/SyncSection'
 import { mergeData } from '../lib/merge'
 import {
   ImportError,
@@ -74,6 +75,8 @@ export default function Settings() {
         换设备或清缓存前先导出一份。
       </p>
 
+      <SyncSection />
+
       <section className="space-y-2">
         <h2 className="text-sm text-ink-soft">导出</h2>
         <button
@@ -139,7 +142,7 @@ export default function Settings() {
       )}
 
       <p className="mt-auto text-xs text-ink-faint">
-        多设备自动同步会在下一阶段接入，到时这里会多出一个 GitHub 的设置项。
+        导出的文件可以离线保存，即便 token 过期或不想再用 GitHub，数据也拿得回来。
       </p>
     </div>
   )

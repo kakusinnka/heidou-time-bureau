@@ -15,6 +15,7 @@ const SORT_LABELS: { mode: SortMode; label: string }[] = [
 export default function Home() {
   const events = useEvents()
   const categories = useStore((s) => s.categories)
+  const syncStatus = useStore((s) => s.syncStatus)
   const [sort, setSort] = useState<SortMode>('overdue')
   const [creating, setCreating] = useState(false)
 
@@ -29,7 +30,11 @@ export default function Home() {
     <div className="mx-auto flex min-h-dvh max-w-md flex-col px-4 pt-safe pb-safe">
       <header className="flex items-center justify-between pb-3">
         <h1 className="text-lg font-medium">黑豆时间管理局</h1>
-        <Link to="/settings" className="text-sm text-ink-soft">
+        <Link to="/settings" className="flex items-center gap-1.5 text-sm text-ink-soft">
+          {syncStatus === 'syncing' && <span className="text-ink-faint">同步中</span>}
+          {syncStatus === 'error' && (
+            <span className="size-1.5 rounded-full bg-overdue" aria-label="同步失败" />
+          )}
           数据
         </Link>
       </header>
