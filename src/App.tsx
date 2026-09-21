@@ -1,6 +1,7 @@
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import EventDetail from './pages/EventDetail'
+import Settings from './pages/Settings'
 import UndoToast from './components/UndoToast'
 
 export default function App() {
@@ -10,6 +11,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/event/:id" element={<EventDetail />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <UndoToast />

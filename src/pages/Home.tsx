@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import EventCard from '../components/EventCard'
 import EventForm from '../components/EventForm'
 import { useEvents, useStore } from '../store'
@@ -28,6 +29,9 @@ export default function Home() {
     <div className="mx-auto flex min-h-dvh max-w-md flex-col px-4 pt-safe pb-safe">
       <header className="flex items-center justify-between pb-3">
         <h1 className="text-lg font-medium">黑豆时间管理局</h1>
+        <Link to="/settings" className="text-sm text-ink-soft">
+          数据
+        </Link>
       </header>
 
       {events.length > 0 && (
