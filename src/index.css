@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+
+/* 设计令牌：柔和的纸张底色 + 三档状态色，浅色深色各一套 */
+@theme {
+  --color-paper: #f7f5ef;
+  --color-card: #fffdf8;
+  --color-line: #e4e0d5;
+  --color-ink: #2c2c2a;
+  --color-ink-soft: #6b6a63;
+  --color-ink-faint: #a3a199;
+
+  --color-overdue: #c2603a;
+  --color-overdue-bg: #f9ece5;
+  --color-due: #b07d18;
+  --color-due-bg: #faf1dc;
+  --color-fine: #4f7a4a;
+
+  --font-sans: system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+@layer theme {
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-paper: #1a1a18;
+      --color-card: #23231f;
+      --color-line: #34342e;
+      --color-ink: #ece9e0;
+      --color-ink-soft: #a5a29a;
+      --color-ink-faint: #6e6c65;
+
+      --color-overdue: #e08a63;
+      --color-overdue-bg: #3a2019;
+      --color-due: #d6a63f;
+      --color-due-bg: #362a12;
+      --color-fine: #8bb385;
+    }
+  }
+}
+
+html {
+  background-color: var(--color-paper);
+  /* 手机上禁用双击缩放带来的 300ms 延迟，同时保留系统字号设置 */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  /* iOS 上下拉回弹时露出的底色也保持一致 */
+  overscroll-behavior-y: none;
+}
+
+/* 刘海屏与手势条安全区 */
+@utility pt-safe {
+  padding-top: calc(env(safe-area-inset-top) + --spacing(3));
+}
+
+@utility pb-safe {
+  padding-bottom: calc(env(safe-area-inset-bottom) + --spacing(4));
+}
