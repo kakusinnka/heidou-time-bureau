@@ -1,17 +1,18 @@
+import { HashRouter, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import EventDetail from './pages/EventDetail'
+import UndoToast from './components/UndoToast'
+
 export default function App() {
   return (
-    <div className="mx-auto flex min-h-dvh max-w-md flex-col px-4 pt-safe pb-safe">
-      <header className="flex items-center justify-between">
-        <h1 className="text-lg font-medium">黑豆时间管理局</h1>
-        <span className="text-sm text-ink-faint">设置</span>
-      </header>
-
-      <div className="flex flex-1 flex-col items-center justify-center gap-2 text-center">
-        <p className="text-base">本局尚未受理任何事项</p>
-        <p className="text-sm text-ink-soft">
-          第一阶段只搭好了骨架，事件列表在下一阶段接入。
-        </p>
-      </div>
-    </div>
+    // GitHub Pages 没有服务端路由，刷新子路径会 404，所以用 hash 路由
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/event/:id" element={<EventDetail />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+      <UndoToast />
+    </HashRouter>
   )
 }
