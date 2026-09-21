@@ -26,7 +26,9 @@ function describe(event: TimeEvent): string {
   const past = daysSince === 0 ? '今天刚做' : `已过去 ${daysSince} 天`
   if (status === 'untracked') return past
   if (status === 'overdue') return `${past} · 超期 ${Math.abs(daysRemaining ?? 0)} 天`
-  if (status === 'due') return `${past} · 还剩 ${daysRemaining} 天`
+  if (status === 'due') {
+    return `${past} · ${daysRemaining === 0 ? '今天到期' : `还剩 ${daysRemaining} 天`}`
+  }
   return `${past} · 周期 ${event.expectedIntervalDays} 天`
 }
 

@@ -46,7 +46,9 @@ export default function EventDetail() {
     status === 'overdue'
       ? `已超期 ${Math.abs(daysRemaining ?? 0)} 天`
       : status === 'due'
-        ? `该做了 · 还剩 ${daysRemaining} 天`
+        ? daysRemaining === 0
+          ? '该做了 · 今天到期'
+          : `该做了 · 还剩 ${daysRemaining} 天`
         : status === 'fine'
           ? `距下次还有 ${daysRemaining} 天`
           : status === 'untracked'

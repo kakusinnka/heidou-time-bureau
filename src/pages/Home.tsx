@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import EventCard from '../components/EventCard'
 import EventForm from '../components/EventForm'
 import { useEvents, useStore } from '../store'
-import { getState, sortEvents } from '../lib/status'
+import { sortEvents } from '../lib/status'
 import type { SortMode } from '../lib/status'
+import { homeBanner } from '../lib/copy'
 
 const SORT_LABELS: { mode: SortMode; label: string }[] = [
   { mode: 'overdue', label: '超期优先' },
@@ -23,8 +24,7 @@ export default function Home() {
   const iconOf = (name: string) =>
     categories.find((c) => c.name === name)?.icon ?? '📌'
 
-  const overdue = events.filter((e) => getState(e).status === 'overdue').length
-  const due = events.filter((e) => getState(e).status === 'due').length
+  const banner = useMemo(() => homeBanner(events), [events])
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-md flex-col px-4 pt-safe pb-safe">
@@ -43,18 +43,14 @@ export default function Home() {
         <>
           <p
             className={`rounded-lg px-3 py-2 text-sm ${
-              overdue > 0
+              banner.tone === 'overdue'
                 ? 'bg-overdue-bg text-overdue'
-                : due > 0
+                : banner.tone === 'due'
                   ? 'bg-due-bg text-due'
                   : 'text-ink-soft'
             }`}
           >
-            {overdue > 0
-              ? `本局记录在案：${overdue} 项超期${due > 0 ? `，${due} 项该做了` : ''}`
-              : due > 0
-                ? `${due} 项该做了，其余一切正常`
-                : '一切正常，本局无事可奏'}
+            {banner.text}
           </p>
 
           <div className="flex gap-2 py-3">

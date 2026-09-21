@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import EventDetail from './pages/EventDetail'
 import Settings from './pages/Settings'
 import UndoToast from './components/UndoToast'
+import UpdatePrompt from './components/UpdatePrompt'
 import { useAutoSync } from './hooks/useAutoSync'
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="*" element={<Home />} />
       </Routes>
       <UndoToast />
+      <UpdatePrompt />
     </HashRouter>
   )
 }

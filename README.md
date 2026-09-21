@@ -28,6 +28,14 @@ npm install
 npm run dev
 ```
 
+改了 `public/logo.svg` 之后，重新生成各尺寸图标：
+
+```bash
+npx pwa-assets-generator
+```
+
+Service Worker 只在生产构建里生效，验证离线和更新提示要用 `npm run build && npm run preview`。
+
 ## 部署
 
 推送到 `main` 分支后由 GitHub Actions 自动构建并发布到 Pages。

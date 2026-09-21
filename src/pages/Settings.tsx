@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useStore } from '../store'
 import SyncSection from '../components/SyncSection'
+import InstallSection from '../components/InstallSection'
 import { mergeData } from '../lib/merge'
 import {
   ImportError,
@@ -76,6 +77,8 @@ export default function Settings() {
       </p>
 
       <SyncSection />
+
+      <InstallSection />
 
       <section className="space-y-2">
         <h2 className="text-sm text-ink-soft">导出</h2>

@@ -8,8 +8,17 @@
     />
     <meta name="theme-color" content="#f7f5ef" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1a1a18" media="(prefers-color-scheme: dark)" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="description" content="记录上次做某事是什么时候" />
+
+    <!-- iOS 不读 manifest 里的图标和标题，需要单独声明 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="时间管理局" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
+
     <title>黑豆时间管理局</title>
   </head>
   <body>
